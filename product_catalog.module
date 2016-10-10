@@ -1,0 +1,25 @@
+<?php
+/**
+ * @file
+ * Code for the Product Catalog feature.
+ */
+
+include_once 'product_catalog.features.inc';
+
+// =====================
+// = Add Node Template =
+// =====================
+
+/**
+ * Implements hook_theme().
+ */
+function product_catalog_theme($existing, $type, $theme, $path) {
+  $theme = array();
+  $theme['node__catalog_product'] = array(
+    'render element' => 'content',
+    'base hook' => 'node',
+    'template' => 'node--catalog_product',
+    'path' => drupal_get_path('module', 'product_catalog') . '/templates',
+  );
+  return $theme;
+}
