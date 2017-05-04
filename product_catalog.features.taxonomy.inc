@@ -13,9 +13,9 @@ function product_catalog_taxonomy_default_vocabularies() {
       'name' => 'Copier Catalog Manufacturer',
       'machine_name' => 'copier_catalog_manufacturer',
       'description' => 'Name of catalog product manufacturer.',
-      'hierarchy' => '0',
+      'hierarchy' => 0,
       'module' => 'taxonomy',
-      'weight' => '0',
+      'weight' => 0,
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
@@ -36,9 +36,9 @@ function product_catalog_taxonomy_default_vocabularies() {
       'name' => 'Family',
       'machine_name' => 'family',
       'description' => 'Family that a product belongs to (Printer, Scanner, MFP, etc.).',
-      'hierarchy' => '0',
+      'hierarchy' => 0,
       'module' => 'taxonomy',
-      'weight' => '0',
+      'weight' => 0,
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',

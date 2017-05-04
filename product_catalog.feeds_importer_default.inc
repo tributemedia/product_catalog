@@ -38,7 +38,6 @@ function product_catalog_feeds_importer_default() {
           'xpathparser:3' => 'Color-or-Black--amp--White',
           'xpathparser:4' => 'Family',
           'xpathparser:5' => 'Type',
-          'xpathparser:6' => 'Brochure',
           'xpathparser:7' => 'Virtual-Demo',
           'xpathparser:8' => 'Price',
           'xpathparser:9' => 'Summary',
@@ -53,6 +52,7 @@ function product_catalog_feeds_importer_default() {
           'xpathparser:17' => 'Secondary-Image-3',
           'xpathparser:18' => 'Secondary-Image-3-Alt',
           'xpathparser:19' => 'Speed',
+          'xpathparser:21' => 'Brochure',
         ),
         'rawXML' => array(
           'xpathparser:0' => 0,
@@ -61,7 +61,6 @@ function product_catalog_feeds_importer_default() {
           'xpathparser:3' => 0,
           'xpathparser:4' => 0,
           'xpathparser:5' => 0,
-          'xpathparser:6' => 0,
           'xpathparser:7' => 0,
           'xpathparser:8' => 0,
           'xpathparser:9' => 0,
@@ -76,6 +75,7 @@ function product_catalog_feeds_importer_default() {
           'xpathparser:17' => 0,
           'xpathparser:18' => 0,
           'xpathparser:19' => 0,
+          'xpathparser:21' => 0,
         ),
         'context' => '//node',
         'exp' => array(
@@ -88,7 +88,6 @@ function product_catalog_feeds_importer_default() {
             'xpathparser:3' => 0,
             'xpathparser:4' => 0,
             'xpathparser:5' => 0,
-            'xpathparser:6' => 0,
             'xpathparser:7' => 0,
             'xpathparser:8' => 0,
             'xpathparser:9' => 0,
@@ -103,6 +102,7 @@ function product_catalog_feeds_importer_default() {
             'xpathparser:17' => 0,
             'xpathparser:18' => 0,
             'xpathparser:19' => 0,
+            'xpathparser:21' => 0,
           ),
         ),
         'allow_override' => 1,
@@ -154,94 +154,93 @@ function product_catalog_feeds_importer_default() {
             'language' => 'und',
           ),
           6 => array(
-            'source' => 'xpathparser:6',
-            'target' => 'field_catalog_brochure:url',
-            'unique' => FALSE,
-            'language' => 'und',
-          ),
-          7 => array(
             'source' => 'xpathparser:7',
             'target' => 'field_catalog_virtual_demo:url',
             'unique' => FALSE,
             'language' => 'und',
           ),
-          8 => array(
+          7 => array(
             'source' => 'xpathparser:8',
             'target' => 'field_price',
             'unique' => FALSE,
             'language' => 'und',
           ),
-          9 => array(
+          8 => array(
             'source' => 'xpathparser:9',
             'target' => 'field_summary',
             'unique' => FALSE,
             'language' => 'und',
           ),
-          10 => array(
+          9 => array(
             'source' => 'xpathparser:10',
             'target' => 'field_highlights',
             'unique' => FALSE,
             'language' => 'und',
           ),
-          11 => array(
+          10 => array(
             'source' => 'xpathparser:11',
             'target' => 'body',
             'unique' => FALSE,
             'language' => 'und',
           ),
-          12 => array(
+          11 => array(
             'source' => 'xpathparser:12',
             'target' => 'field_primary_image:uri',
             'unique' => FALSE,
             'language' => 'und',
           ),
-          13 => array(
+          12 => array(
             'source' => 'xpathparser:20',
             'target' => 'field_primary_image:alt',
             'unique' => FALSE,
             'language' => 'und',
           ),
-          14 => array(
+          13 => array(
             'source' => 'xpathparser:13',
             'target' => 'field_secondary_image_1:uri',
             'unique' => FALSE,
             'language' => 'und',
           ),
-          15 => array(
+          14 => array(
             'source' => 'xpathparser:14',
             'target' => 'field_secondary_image_1:alt',
             'unique' => FALSE,
             'language' => 'und',
           ),
-          16 => array(
+          15 => array(
             'source' => 'xpathparser:15',
             'target' => 'field_secondary_image_2:uri',
             'unique' => FALSE,
             'language' => 'und',
           ),
-          17 => array(
+          16 => array(
             'source' => 'xpathparser:16',
             'target' => 'field_secondary_image_2:alt',
             'unique' => FALSE,
             'language' => 'und',
           ),
-          18 => array(
+          17 => array(
             'source' => 'xpathparser:17',
             'target' => 'field_secondary_image_3:uri',
             'unique' => FALSE,
             'language' => 'und',
           ),
-          19 => array(
+          18 => array(
             'source' => 'xpathparser:18',
             'target' => 'field_secondary_image_3:alt',
             'unique' => FALSE,
             'language' => 'und',
           ),
-          20 => array(
+          19 => array(
             'source' => 'xpathparser:19',
             'target' => 'field_speed2',
             'unique' => FALSE,
             'language' => 'und',
+          ),
+          20 => array(
+            'source' => 'xpathparser:21',
+            'target' => 'field_catalog_brochure',
+            'unique' => FALSE,
           ),
         ),
         'insert_new' => '1',

@@ -274,14 +274,22 @@ if ($famName == 'Scanner'){
 		<?php
 		$node_wrapper = entity_metadata_wrapper('node', $node);
 		
-		if (!empty($node->field_catalog_brochure)) {
+    if (!empty($node->field_custom_brochure)) {
+      $uri = $node->field_custom_brochure[LANGUAGE_NONE][0]['uri'];
+      $url = file_create_url($uri);
+      $options = array(
+        'attributes' => array(
+          'target' => '_blank',
+          'class' => 'button-red-45',
+        ),
+      );
+      print l('Download Brochure', $url, $options);
+    } elseif (!empty($node->field_catalog_brochure)) {
 			$manufacturer = reset($node_wrapper->field_catalog_manufacturer->value());
 			$manufacturer_name = strtolower(str_replace(' ', '-', $manufacturer->name));
 			$brochure = $node_wrapper->field_catalog_brochure->value();
-			preg_match('/.*[\/](.*)$/', $brochure['url'], $matches);
-			$brochure['url'] = !empty($matches[1]) ? $matches[1] : $brochure['url'];
 			print l('Download Brochure', 'http://brochure.copiercatalog.com/' 
-			. $manufacturer_name . '/' . $brochure['url'], array(
+			. $manufacturer_name . '/' . $brochure, array(
 				'attributes' => array(
 					'target' => '_blank', 
 					'class' => 'button-red-45'

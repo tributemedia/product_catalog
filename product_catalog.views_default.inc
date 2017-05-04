@@ -87,7 +87,7 @@ function product_catalog_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'You do not have any items that match your search criteria. Please try again by editing the title and/or manufacturer fields above.';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Field: Broken/missing handler */
+  /* Field: Bulk operations: Content */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
