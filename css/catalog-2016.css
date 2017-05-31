@@ -267,6 +267,10 @@ button#edit-submit-product-landing-page:hover {
 	padding-bottom: 40px;
 }
 
+.view-product-landing-page fieldset select {
+	height: auto;
+}
+
 /* ================ */
 /* = product page = */
 /* ================ */
