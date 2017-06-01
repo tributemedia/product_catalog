@@ -256,7 +256,7 @@ button#edit-submit-product-landing-page:hover {
 
 .catalog-info-line .manufacturer .subtitle {
 	float: left;
-	line-height: 0;
+	line-height: inherit;
 }
 
 .node-type-catalog-product h1.page-header.title {
