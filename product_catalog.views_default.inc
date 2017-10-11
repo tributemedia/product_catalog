@@ -89,8 +89,28 @@ function product_catalog_views_default_views() {
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
   /* Field: Bulk operations: Content */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '0';
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['force_single'] = 0;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['entity_load_capacity'] = '10';
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_operations'] = array(
+    'action::node_publish_action' => array(
+      'selected' => 1,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::node_unpublish_action' => array(
+      'selected' => 1,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -295,11 +315,11 @@ function product_catalog_views_default_views() {
 	</div>
 </div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Sort criterion: Taxonomy term: Name */
-  $handler->display->display_options['sorts']['name']['id'] = 'name';
-  $handler->display->display_options['sorts']['name']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['sorts']['name']['field'] = 'name';
-  $handler->display->display_options['sorts']['name']['relationship'] = 'field_catalog_manufacturer_tid';
+  /* Sort criterion: Taxonomy term: Weight */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['relationship'] = 'field_catalog_manufacturer_tid';
   /* Sort criterion: Content: Speed (field_speed2) */
   $handler->display->display_options['sorts']['field_speed2_value']['id'] = 'field_speed2_value';
   $handler->display->display_options['sorts']['field_speed2_value']['table'] = 'field_data_field_speed2';
