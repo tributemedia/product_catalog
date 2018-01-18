@@ -349,3 +349,23 @@ button#edit-submit-product-landing-page:hover {
     padding: 3px;
     text-align: center;
 }
+
+/* ========================== */
+/* = Request A Quote Styles = */
+/* ========================== */
+
+fieldset.webform-component--name legend {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+fieldset.webform-component--name .webform-component-textfield .description {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+fieldset.webform-component--name .webform-component-textfield {
+  width: 50%;
+  float: left;
+  padding: 0px 10px;
+}
