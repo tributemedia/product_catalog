@@ -288,7 +288,33 @@ if ($famName == 'Scanner'){
 			$manufacturer = reset($node_wrapper->field_catalog_manufacturer->value());
 			$manufacturer_name = strtolower(str_replace(' ', '-', $manufacturer->name));
 			$brochure = $node_wrapper->field_catalog_brochure->value();
-			print l('Download Brochure', 'http://brochure.copiercatalog.com/' 
+			
+			// Check brochure link and re-build if it's a full path
+			if(strpos($brochure, 'brochure') !== false) {
+			  $brochure = str_replace('https://brochure.copiercatalog.com/' . $manufacturer_name, '', $brochure);
+      		  $brochure = str_replace('http://brochure.copiercatalog.com/' . $manufacturer_name, '', $brochure);
+      		  
+      		  // Some links don't contain the manufacturer name, so these are to cover
+      		  // that case.
+      		  $brochure = str_replace('https://brochure.copiercatalog.com/', '', $brochure);
+      		  $brochure = str_replace('http://brochure.copiercatalog.com/', '', $brochure);
+			}
+			elseif(strpos($brochure, 'copier') !== false) {
+			  if(strpos($brochure, 'www') !== false) {
+			    $brochure = str_replace('https://www.copiercatalog.com/' . $manufacturer_name, '', $brochure);
+      		    $brochure = str_replace('http://www.copiercatalog.com/' . $manufacturer_name, '', $brochure);
+      		    $brochure = str_replace('https://www.copiercatalog.com/', '', $brochure);
+      		    $brochure = str_replace('http://www.copiercatalog.com/', '', $brochure);
+      		  }
+      		  else {
+      		    $brochure = str_replace('https://copiercatalog.com/' . $manufacturer_name, '', $brochure);
+      		    $brochure = str_replace('http://copiercatalog.com/' . $manufacturer_name, '', $brochure);
+      		    $brochure = str_replace('https://copiercatalog.com/', '', $brochure);
+      		    $brochure = str_replace('http://copiercatalog.com/', '', $brochure);
+      		  }
+			}
+            
+            print l('Download Brochure', 'http://brochure.copiercatalog.com/' 
 			. $manufacturer_name . '/' . $brochure, array(
 				'attributes' => array(
 					'target' => '_blank', 
