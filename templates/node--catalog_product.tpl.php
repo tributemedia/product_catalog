@@ -148,7 +148,7 @@ if ($famName == 'Scanner'){
 		<div class="<?php print $colorboxImgClass; ?>">
 			<?php
 			$primary_image = field_get_items('node', $node, 'field_primary_image');
-			
+
 			if (!empty($primary_image)) {
 				$image_item = array(
 					'style_name' => $imageStyle,
@@ -158,7 +158,7 @@ if ($famName == 'Scanner'){
 					'alt' => $primary_image[0]['alt'],
 					'title' => $primary_image[0]['title'],
 				);
-				
+
 				$output = theme('image_style', $image_item);
 				$file_url = file_create_url($primary_image[0]['uri']);
 
@@ -166,7 +166,7 @@ if ($famName == 'Scanner'){
 	        print l($output, $file_url, array(
 						'attributes' => array(
 							'class' => 'colorbox'
-						), 
+						),
 						'html' => TRUE,
 					));
 			  } else {
@@ -175,16 +175,16 @@ if ($famName == 'Scanner'){
 			}
 			?>
 		</div> <!-- primary-image -->
-		
+
 		<div class="clear-all"></div>
-		
+
 		<?php if ($view_mode != 'colorbox') : ?>
 		<div class="secondary_images-wrapper">
 			<?php if ($node->field_secondary_image_1) : ?>
 			<div class="secondary-images-first secondary-images">
 				<?php
 				$secondary_image_1 = field_get_items('node', $node, 'field_secondary_image_1');
-				
+
 				if (!empty($secondary_image_1)) {
 					$image_item = array(
 						'style_name' => 'catalog-product-secondary',
@@ -194,25 +194,25 @@ if ($famName == 'Scanner'){
 						'alt' => $secondary_image_1[0]['alt'],
 						'title' => $secondary_image_1[0]['title'],
 					);
-					
+
 					$output = theme('image_style', $image_item);
 					$file_url = file_create_url($secondary_image_1[0]['uri']);
           print l($output, $file_url, array(
 						'attributes' => array(
 							'class' => 'colorbox'
-						), 
+						),
 						'html' => TRUE,
 					));
 				}
 				?>
 			</div>
 		  <?php endif; ?>
-			
+
 			<?php if ($node->field_secondary_image_2) : ?>
 			<div class="secondary-images-second secondary-images">
 				<?php
 				$secondary_image_2 = field_get_items('node', $node, 'field_secondary_image_2');
-				
+
 				if (!empty($secondary_image_2)) {
 					$image_item = array(
 						'style_name' => 'catalog-product-secondary',
@@ -222,25 +222,25 @@ if ($famName == 'Scanner'){
 						'alt' => $secondary_image_2[0]['alt'],
 						'title' => $secondary_image_2[0]['title'],
 					);
-					
+
 					$output = theme('image_style', $image_item);
 					$file_url = file_create_url($secondary_image_2[0]['uri']);
           print l($output, $file_url, array(
 						'attributes' => array(
 							'class' => 'colorbox'
-						), 
+						),
 						'html' => TRUE,
 					));
 				}
 				?>
 			</div>
 		  <?php endif; ?>
-			
+
 			<?php if ($node->field_secondary_image_3) : ?>
 			<div class="secondary-images-third secondary-images">
 				<?php
 				$secondary_image_3 = field_get_items('node', $node, 'field_secondary_image_3');
-				
+
 				if (!empty($secondary_image_3)) {
 					$image_item = array(
 						'style_name' => 'catalog-product-secondary',
@@ -250,13 +250,13 @@ if ($famName == 'Scanner'){
 						'alt' => $secondary_image_3[0]['alt'],
 						'title' => $secondary_image_3[0]['title'],
 					);
-					
+
 					$output = theme('image_style', $image_item);
 					$file_url = file_create_url($secondary_image_3[0]['uri']);
           print l($output, $file_url, array(
 						'attributes' => array(
 							'class' => 'colorbox'
-						), 
+						),
 						'html' => TRUE,
 					));
 				}
@@ -264,16 +264,16 @@ if ($famName == 'Scanner'){
 			</div>
 		  <?php endif; ?>
 		</div>
-		
-	
-	
+
+
+
 	  <div class="clear-all"></div>
 	 <?php endif; ?>
   </div> <!-- inner -->
 	<div class="catalog-links">
 		<?php
 		$node_wrapper = entity_metadata_wrapper('node', $node);
-		
+
     if (!empty($node->field_custom_brochure)) {
       $uri = $node->field_custom_brochure[LANGUAGE_NONE][0]['uri'];
       $url = file_create_url($uri);
@@ -288,36 +288,38 @@ if ($famName == 'Scanner'){
 			$manufacturer = reset($node_wrapper->field_catalog_manufacturer->value());
 			$manufacturer_name = strtolower(str_replace(' ', '-', $manufacturer->name));
 			$brochure = $node_wrapper->field_catalog_brochure->value();
-			
+      $brochure_name = explode('/', $brochure);
+      $brochure_name = $brochure_name[count($brochure_name) - 1];
+
 			// Check brochure link and re-build if it's a full path
 			if(strpos($brochure, 'brochure') !== false) {
-			  $brochure = str_replace('https://brochure.copiercatalog.com/' . $manufacturer_name, '', $brochure);
-      		  $brochure = str_replace('http://brochure.copiercatalog.com/' . $manufacturer_name, '', $brochure);
-      		  
+			  $brochure = str_replace('https://brochure.copiercatalog.com/' . $manufacturer_name, '', $brochure_name);
+      		  $brochure = str_replace('http://brochure.copiercatalog.com/' . $manufacturer_name, '', $brochure_name);
+
       		  // Some links don't contain the manufacturer name, so these are to cover
       		  // that case.
-      		  $brochure = str_replace('https://brochure.copiercatalog.com/', '', $brochure);
-      		  $brochure = str_replace('http://brochure.copiercatalog.com/', '', $brochure);
+      		  $brochure = str_replace('https://brochure.copiercatalog.com/', '', $brochure_name);
+      		  $brochure = str_replace('http://brochure.copiercatalog.com/', '', $brochure_name);
 			}
 			elseif(strpos($brochure, 'copier') !== false) {
 			  if(strpos($brochure, 'www') !== false) {
-			    $brochure = str_replace('https://www.copiercatalog.com/' . $manufacturer_name, '', $brochure);
-      		    $brochure = str_replace('http://www.copiercatalog.com/' . $manufacturer_name, '', $brochure);
-      		    $brochure = str_replace('https://www.copiercatalog.com/', '', $brochure);
-      		    $brochure = str_replace('http://www.copiercatalog.com/', '', $brochure);
-      		  }
+			    $brochure = str_replace('https://www.copiercatalog.com/' . $manufacturer_name, '', $brochure_name);
+      		    $brochure = str_replace('http://www.copiercatalog.com/' . $manufacturer_name, '', $brochure_name);
+      		    $brochure = str_replace('https://www.copiercatalog.com/', '', $brochure_name);
+      		    $brochure = str_replace('http://www.copiercatalog.com/', '', $brochure_name);
+      		  } 
       		  else {
-      		    $brochure = str_replace('https://copiercatalog.com/' . $manufacturer_name, '', $brochure);
-      		    $brochure = str_replace('http://copiercatalog.com/' . $manufacturer_name, '', $brochure);
-      		    $brochure = str_replace('https://copiercatalog.com/', '', $brochure);
-      		    $brochure = str_replace('http://copiercatalog.com/', '', $brochure);
+      		    $brochure = str_replace('https://copiercatalog.com/' . $manufacturer_name, '', $brochure_name);
+      		    $brochure = str_replace('http://copiercatalog.com/' . $manufacturer_name, '', $brochure_name);
+      		    $brochure = str_replace('https://copiercatalog.com/', '', $brochure_name);
+      		    $brochure = str_replace('http://copiercatalog.com/', '', $brochure_name);
       		  }
 			}
-            
-            print l('Download Brochure', 'http://brochure.copiercatalog.com/' 
+
+            print l('Download Brochure', 'http://brochure.copiercatalog.com/'
 			. $manufacturer_name . '/' . $brochure, array(
 				'attributes' => array(
-					'target' => '_blank', 
+					'target' => '_blank',
 					'class' => 'button-red-45'
 				),
 			));
@@ -326,7 +328,7 @@ if ($famName == 'Scanner'){
 			<div class="product-watch-demo">
 				<?php print l('Watch Demo Video', $node->field_catalog_virtual_demo[LANGUAGE_NONE][0]['url'], array(
 				'attributes' => array(
-					'target' => '_blank', 
+					'target' => '_blank',
 					'class' => 'button-red-45'
 				),
 				)); ?>
@@ -335,7 +337,7 @@ if ($famName == 'Scanner'){
 		<div class="product-request-quote">
 			<?php print l('Request Quote', 'request-quote', array(
 			'attributes' => array(
-				'class' => 'button-red-45'), 
+				'class' => 'button-red-45'),
 				'query' => array(
 					'product' => $title
 				),
@@ -349,33 +351,33 @@ if ($famName == 'Scanner'){
 		<div class="catalog-info-line-wrapper">
 			<div class="inner">
 				<div class="catalog-info-line">
-					
+
 					<div class="details col-xs-12 col-sm-6 col s12 m6">
 						<?php if ($node->field_color_or_black_white) : ?>
 						<div><?php print $node->field_color_or_black_white[LANGUAGE_NONE][0]['value']; ?></div>
 				  		<?php endif; ?>
-				   	
+
 						<?php if ($node->field_catalog_family) : ?>
 						<div><?php print render($content['field_catalog_family']); ?></div>
 				  		<?php endif; ?>
-						
+
 						<?php if ($view_mode != 'colorbox') :
 							if (!empty($speed)) :
 								if ($speed[0]['value'] != 0) : //if speed is N/A, don't print anything
 								  if ($speed[0]['value'] < 101) : ?>
-									  	<div class="product-catalog-speed"><?php print 'Up to ' 
+									  	<div class="product-catalog-speed"><?php print 'Up to '
 												. $speed[0]['value'] . ' ' . $action . '/minute'; ?></div>
 									<?php else : ?>
-										<div class="product-catalog-speed"><?php print 'Over 100 ' 
+										<div class="product-catalog-speed"><?php print 'Over 100 '
 											. $action . '/minute'; ?></div>
 									<?php endif; endif; endif; endif; ?>
 					</div>
-				  
+
 				  <div class="manufacturer col-xs-12 col-sm-6 col s12 m6">
 						<div class="title">Manufactured by:</div>
 						<div class="subtitle"><?php print render($content['field_catalog_manufacturer']); ?></div>
 					</div>
-					
+
 				</div>
 			</div>
 		</div>
@@ -391,7 +393,7 @@ if ($famName == 'Scanner'){
 		<h4>Highlights</h4>
 		<?php
 		  $highlights = field_get_items('node', $node, 'field_highlights');
-		  
+
 		  if (!empty($highlights)) {
 		  	print '<ul>';
 		  	foreach ($highlights as $highlight) {
