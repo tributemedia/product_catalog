@@ -1,4 +1,4 @@
-# product_catalog
+# Product Catalog
 Drupal 7 feature for importing and displaying products from the copiercatalog.com site, via XML.
 
 ## Install & Configure
