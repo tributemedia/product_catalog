@@ -59,13 +59,14 @@ function product_catalog_menu() {
 
 function product_catalog_admin_settings($form, &$form_state) {
   $form['help_txt'] = array(
-    '#markup' => '<div class="help-txt">Visit <a href="https://www.copiercatalog.com/user">Copier Catalog</a> to get the client\'s User ID.</div>',
+    '#markup' => '<div class="help-txt">Visit <a href="https://www.copiercatalog.com/user">Copier Catalog</a> to create a user account, and retrieve the User ID for the client.</div>',
   );
   $form['cc_uid'] = array(
     '#title' => t('Copier Catalog User ID'),
     '#type' => 'textfield',
     '#description' => t('Enter the user ID for the account created on www.copiercatalog.com.'),
-    '#default_value' => variable_get('cc_uid', 'UID'),
+    '#default_value' => variable_get('cc_uid', ''),
+    '#attributes' => array('placeholder' => 'UID'),
   );
   $form['submit'] = array(
     '#type' => 'submit',
