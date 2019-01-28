@@ -18,12 +18,47 @@
 	transition: all 0.2s ease-in-out;
 }
 
+.view-product-landing-page .collapsible {
+  box-shadow: none;
+  border-top: none;
+}
+
+.view-product-landing-page #fieldset-id.collapsible {
+	border-left:0px !important;
+	border-right:0px !important;
+	border-top:0px !important;
+	box-shadow:none !important;
+}
+
+.view-product-landing-page fieldset {
+    padding-bottom: 0px !important;
+}
+
+.view-product-landing-page #fieldset-id.collapsible.collapse-processed.collapsed {
+	margin-bottom:80px;
+}
+
 .view-product-landing-page #fieldset-id.collapsible.collapse-processed.collapsed legend {
-	margin-bottom:20px;
+	width:100%;
+  margin-bottom:20px;
 	-webkit-transition: all 0.2s ease-in-out; 
 	-moz-transition: all 0.2s ease-in-out; 
 	-o-transition: all 0.2s ease-in-out; 
 	transition: all 0.2s ease-in-out;
+}
+
+.view-product-landing-page #fieldset-id.collapsible.collapse-processed legend a {
+	background:url("images/search-arrow-up.png") no-repeat scroll 127px 4px;
+	color:#ffffff;
+	padding-right:20px;
+	display: block;
+}
+
+.view-product-landing-page #fieldset-id.collapsible.collapse-processed.collapsed legend a, 
+.view-product-landing-page #fieldset-id.collapsible.collapse-processed.collapse-processed legend a {
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .view-product-landing-page #fieldset-id.collapsible.collapse-processed legend a {
@@ -41,9 +76,13 @@
 
 .view-product-landing-page .fieldset-wrapper {
 	background:#eeeeee;
-    border-bottom: 2px solid #333333;
-    margin-bottom: 20px;
-    padding: 5px 15px 15px 15px;
+  border-bottom: 2px solid #333333;
+  margin-bottom: 20px;
+  padding: 5px 15px 15px 15px;
+}
+
+.fieldset-legend span.summary {
+    margin: 0px;
 }
 
 .product-catalog {
