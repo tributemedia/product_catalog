@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_product_specs_doc
+    - node.type.catalog_product
+  module:
+    - file
+id: node.catalog_product.field_product_specs_doc
+field_name: field_product_specs_doc
+entity_type: node
+bundle: catalog_product
+label: 'Specifications Document'
+description: 'Upload a product specifications document.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: product-catalog/spec-docs
+  file_extensions: pdf
+  max_filesize: ''
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

@@ -1,0 +1,63 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.catalog_product.body
+    - field.field.node.catalog_product.feeds_item
+    - field.field.node.catalog_product.field_default_image_alt
+    - field.field.node.catalog_product.field_default_image_url
+    - field.field.node.catalog_product.field_meta_tags
+    - field.field.node.catalog_product.field_product_broc_btn_text
+    - field.field.node.catalog_product.field_product_category
+    - field.field.node.catalog_product.field_product_custom_brochure
+    - field.field.node.catalog_product.field_product_default_brochure
+    - field.field.node.catalog_product.field_product_image
+    - field.field.node.catalog_product.field_product_manufacturer
+    - field.field.node.catalog_product.field_product_request_quote
+    - field.field.node.catalog_product.field_product_request_quote_form
+    - field.field.node.catalog_product.field_product_spec_btn_text
+    - field.field.node.catalog_product.field_product_specs_doc
+    - field.field.node.catalog_product.field_product_speed
+    - field.field.node.catalog_product.field_product_support_drivers
+    - field.field.node.catalog_product.field_product_type
+    - node.type.catalog_product
+  module:
+    - text
+    - user
+id: node.catalog_product.teaser
+targetEntityType: node
+bundle: catalog_product
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  feeds_item: true
+  field_default_image_alt: true
+  field_default_image_url: true
+  field_meta_tags: true
+  field_product_broc_btn_text: true
+  field_product_category: true
+  field_product_custom_brochure: true
+  field_product_default_brochure: true
+  field_product_image: true
+  field_product_manufacturer: true
+  field_product_request_quote: true
+  field_product_request_quote_form: true
+  field_product_spec_btn_text: true
+  field_product_specs_doc: true
+  field_product_speed: true
+  field_product_support_drivers: true
+  field_product_type: true

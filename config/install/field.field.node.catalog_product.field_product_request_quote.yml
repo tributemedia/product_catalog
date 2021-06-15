@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_product_request_quote
+    - node.type.catalog_product
+id: node.catalog_product.field_product_request_quote
+field_name: field_product_request_quote
+entity_type: node
+bundle: catalog_product
+label: 'Enable Request Quote Button'
+description: 'Check box to enable the "Request Quote" button on this product.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

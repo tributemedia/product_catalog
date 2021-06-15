@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_product_custom_brochure
+    - node.type.catalog_product
+  module:
+    - file
+id: node.catalog_product.field_product_custom_brochure
+field_name: field_product_custom_brochure
+entity_type: node
+bundle: catalog_product
+label: 'Custom Brochure'
+description: 'Upload an optional custom brochure. If left blank, the product''s default brochure will be used.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: product-catalog/brochures
+  file_extensions: pdf
+  max_filesize: ''
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

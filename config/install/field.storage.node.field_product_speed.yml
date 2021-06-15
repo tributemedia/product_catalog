@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_product_speed
+field_name: field_product_speed
+entity_type: node
+type: list_integer
+settings:
+  allowed_values:
+    -
+      value: 0
+      label: 'Not Applicable'
+    -
+      value: 20
+      label: '1-20 pages/min'
+    -
+      value: 40
+      label: '21-40 pages/min'
+    -
+      value: 60
+      label: '41-60 pages/min'
+    -
+      value: 80
+      label: '61-80 pages/min'
+    -
+      value: 95
+      label: '81-100 pages/min'
+    -
+      value: 98
+      label: '100+ pages/min'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_product_speed
+    - node.type.catalog_product
+  module:
+    - options
+id: node.catalog_product.field_product_speed
+field_name: field_product_speed
+entity_type: node
+bundle: catalog_product
+label: Speed
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

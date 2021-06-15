@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Product Type'
+vid: product_type
+description: 'List of terms to describe the type of a catalog product (Printer, Copier, Scanner, etc.).'
+weight: 0

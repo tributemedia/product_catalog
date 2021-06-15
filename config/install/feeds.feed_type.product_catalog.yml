@@ -1,0 +1,226 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.base_field_override.node.catalog_product.title
+    - field.field.node.catalog_product.body
+    - field.field.node.catalog_product.feeds_item
+    - field.field.node.catalog_product.field_default_image_alt
+    - field.field.node.catalog_product.field_default_image_url
+    - field.field.node.catalog_product.field_product_default_brochure
+    - field.field.node.catalog_product.field_product_manufacturer
+    - field.field.node.catalog_product.field_product_speed
+    - field.field.node.catalog_product.field_product_type
+    - node.type.catalog_product
+  module:
+    - feeds_ex
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers: {  }
+id: product_catalog
+label: 'Product Catalog'
+description: 'Imports products from copiercatalog.com into the Catalog Product content type.'
+help: 'To get the URL visit https://www.copiercatalog.com and create a user account for this client and use the user id for the new account in the URL. Example: http://www.copiercatalog.com/catalog-product/xml/[uid]'
+import_period: 3600
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  fallback_hub: ''
+  request_timeout: 30
+parser: xml
+parser_configuration:
+  context:
+    value: //node
+  sources:
+    nid:
+      label: Nid
+      value: Nid
+    manufacturer:
+      label: Manufacturer
+      value: Manufacturer
+    product_name:
+      label: Product
+      value: Product
+    brochure:
+      label: Brochure
+      value: Brochure
+    body:
+      label: Body
+      value: Body
+    meta_description:
+      label: Meta-Description
+      value: Meta-Description
+    family:
+      label: Family
+      value: Family
+    primary_image_d8:
+      label: Primary-Image-D8
+      value: Primary-Image-D8
+    primary_image_alt:
+      label: Primary-Image-Alt
+      value: Primary-Image-Alt
+    d8_speed:
+      label: D8-Speed
+      value: D8-Speed
+  use_tidy: false
+  display_errors: false
+  source_encoding:
+    - auto
+  debug_mode: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  langcode: en
+  update_existing: 0
+  update_non_existent: _keep
+  expire: -1
+  owner_feed_author: true
+  owner_id: 0
+  authorize: true
+  skip_hash_check: false
+  values:
+    type: catalog_product
+custom_sources:
+  family:
+    label: Family
+    value: Family
+    machine_name: family
+  product:
+    label: Product
+    value: Product
+    machine_name: product
+  family1:
+    label: Family
+    value: Family
+    machine_name: family1
+  product1:
+    label: Product
+    value: Product
+    machine_name: product1
+  nid:
+    label: Nid
+    value: Nid
+    machine_name: nid
+  manufacturer:
+    label: Manufacturer
+    value: Manufacturer
+    machine_name: manufacturer
+  product_name:
+    label: Product
+    value: Product
+    machine_name: product_name
+  brochure:
+    label: Brochure
+    value: Brochure
+    machine_name: brochure
+  family_name:
+    label: Family
+    value: Family
+    machine_name: family_name
+  primary_image:
+    label: Primary-Image
+    value: Primary-Image
+    machine_name: primary_image
+  primary_image_alt:
+    label: Primary-Image-Alt
+    value: Primary-Image-Alt
+    machine_name: primary_image_alt
+  body:
+    label: Body
+    value: Body
+    machine_name: body
+  summary:
+    label: Summary
+    value: Summary
+    machine_name: summary
+  '':
+    label: ''
+    value: ''
+    machine_name: ''
+  meta_description:
+    label: Meta-Description
+    value: Meta-Description
+    machine_name: meta_description
+  speed:
+    label: Speed
+    value: Speed
+    machine_name: speed
+  d8_speed:
+    label: D8-Speed
+    value: D8-Speed
+    machine_name: d8_speed
+  primary_image_d8:
+    label: Primary-Image-D8
+    value: Primary-Image-D8
+    machine_name: primary_image_d8
+mappings:
+  -
+    target: feeds_item
+    map:
+      url: ''
+      guid: nid
+    unique:
+      guid: '1'
+    settings: {  }
+  -
+    target: field_product_manufacturer
+    map:
+      target_id: manufacturer
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: '1'
+  -
+    target: title
+    map:
+      value: product_name
+    unique: {  }
+    settings:
+      language: null
+  -
+    target: field_product_default_brochure
+    map:
+      value: brochure
+    unique: {  }
+    settings:
+      language: null
+  -
+    target: body
+    map:
+      value: body
+      summary: meta_description
+    settings:
+      language: null
+      format: plain_text
+  -
+    target: field_product_type
+    map:
+      target_id: family
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: '1'
+  -
+    target: field_default_image_url
+    map:
+      value: primary_image_d8
+    unique: {  }
+    settings:
+      language: null
+  -
+    target: field_default_image_alt
+    map:
+      value: primary_image_alt
+    unique: {  }
+    settings:
+      language: null
+  -
+    target: field_product_speed
+    map:
+      value: d8_speed
+    unique: {  }
+    settings:
+      language: null

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_product_default_brochure
+    - node.type.catalog_product
+id: node.catalog_product.field_product_default_brochure
+field_name: field_product_default_brochure
+entity_type: node
+bundle: catalog_product
+label: 'Default Brochure'
+description: 'Hidden from form, populated by feed from copiercatalog.com as a plain text URL to the default brochure.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

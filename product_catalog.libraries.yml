@@ -1,0 +1,5 @@
+product-catalog:
+  css:
+    component:
+      css/catalog-product.css: {}
+      

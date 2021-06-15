@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Product Manufacturer'
+vid: product_manufacturer
+description: 'List of manufacturers of the catalog products.'
+weight: 0

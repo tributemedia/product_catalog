@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: product_catalog
+label: 'Product Catalog'
+type: 'canonical_entities:node'
+pattern: 'product-catalog/[node:title]'
+selection_criteria:
+  547f7de6-fda9-49f3-a228-a1000379a19e:
+    id: node_type
+    bundles:
+      catalog_product: catalog_product
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 547f7de6-fda9-49f3-a228-a1000379a19e
+selection_logic: and
+weight: -5
+relationships: {  }

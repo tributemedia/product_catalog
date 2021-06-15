@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - image_effects
+name: product_catalog_image
+label: 'Product Catalog Image'
+effects:
+  2a9f40f0-b015-43d2-a404-2c6f2b7cde41:
+    uuid: 2a9f40f0-b015-43d2-a404-2c6f2b7cde41
+    id: image_effects_scale_and_smart_crop
+    weight: 1
+    data:
+      width: '300'
+      height: '300'
+      upscale: false
+      simulate: false
+      algorithm: entropy_slice

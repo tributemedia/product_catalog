@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_product_request_quote_form
+    - node.type.catalog_product
+    - webform.webform.request_quote
+  module:
+    - webform
+id: node.catalog_product.field_product_request_quote_form
+field_name: field_product_request_quote_form
+entity_type: node
+bundle: catalog_product
+label: 'Request Quote Form'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    default_data: ''
+    status: open
+    open: ''
+    close: ''
+    target_uuid: d3384e8b-67ad-470e-ae68-872de4e338aa
+default_value_callback: ''
+settings:
+  handler: 'default:webform'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: webform

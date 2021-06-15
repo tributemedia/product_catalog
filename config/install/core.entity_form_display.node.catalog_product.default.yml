@@ -1,0 +1,307 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.catalog_product.body
+    - field.field.node.catalog_product.feeds_item
+    - field.field.node.catalog_product.field_default_image_alt
+    - field.field.node.catalog_product.field_default_image_url
+    - field.field.node.catalog_product.field_meta_tags
+    - field.field.node.catalog_product.field_product_broc_btn_text
+    - field.field.node.catalog_product.field_product_category
+    - field.field.node.catalog_product.field_product_custom_brochure
+    - field.field.node.catalog_product.field_product_default_brochure
+    - field.field.node.catalog_product.field_product_image
+    - field.field.node.catalog_product.field_product_manufacturer
+    - field.field.node.catalog_product.field_product_request_quote
+    - field.field.node.catalog_product.field_product_request_quote_form
+    - field.field.node.catalog_product.field_product_spec_btn_text
+    - field.field.node.catalog_product.field_product_specs_doc
+    - field.field.node.catalog_product.field_product_speed
+    - field.field.node.catalog_product.field_product_support_drivers
+    - field.field.node.catalog_product.field_product_type
+    - image.style.thumbnail
+    - node.type.catalog_product
+  module:
+    - field_group
+    - file
+    - imce
+    - link
+    - metatag
+    - path
+    - svg_image
+    - text
+    - webform
+third_party_settings:
+  field_group:
+    group_tabs:
+      children:
+        - group_image
+        - group_content
+        - group_product_info
+        - group_links_downloads
+      parent_name: ''
+      weight: 1
+      format_type: tabs
+      format_settings:
+        id: ''
+        classes: ''
+        direction: horizontal
+      label: Tabs
+    group_image:
+      children:
+        - field_product_image
+      parent_name: group_tabs
+      weight: 2
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: open
+        description: ''
+        required_fields: true
+      label: Image
+    group_content:
+      children:
+        - body
+      parent_name: group_tabs
+      weight: 3
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Content
+    group_product_info:
+      children:
+        - field_product_manufacturer
+        - field_product_type
+        - field_product_category
+        - field_product_speed
+      parent_name: group_tabs
+      weight: 4
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Product Info'
+    group_links_downloads:
+      children:
+        - field_product_request_quote
+        - field_product_request_quote_form
+        - group_brochure
+        - group_specifications_document
+        - field_product_support_drivers
+      parent_name: group_tabs
+      weight: 5
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Links & Downloads'
+    group_brochure:
+      children:
+        - field_product_broc_btn_text
+        - field_product_custom_brochure
+      parent_name: group_links_downloads
+      weight: 5
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: Brochure
+    group_specifications_document:
+      children:
+        - field_product_spec_btn_text
+        - field_product_specs_doc
+      parent_name: group_links_downloads
+      weight: 6
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: 'Specifications Document'
+id: node.catalog_product.default
+targetEntityType: node
+bundle: catalog_product
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 2
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+    region: content
+  created:
+    type: datetime_timestamp
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_meta_tags:
+    weight: 9
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_firehose
+    region: content
+  field_product_broc_btn_text:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_product_category:
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_product_custom_brochure:
+    weight: 7
+    settings:
+      progress_indicator: throbber
+    third_party_settings:
+      imce:
+        enabled: true
+    type: file_generic
+    region: content
+  field_product_image:
+    weight: 2
+    settings:
+      preview_image_style: thumbnail
+      progress_indicator: throbber
+    third_party_settings:
+      imce:
+        enabled: true
+    type: image_image
+    region: content
+  field_product_manufacturer:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_product_request_quote:
+    weight: 3
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_product_request_quote_form:
+    weight: 4
+    settings:
+      default_data: true
+    third_party_settings: {  }
+    type: webform_entity_reference_select
+    region: content
+  field_product_spec_btn_text:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_product_specs_doc:
+    weight: 8
+    settings:
+      progress_indicator: throbber
+    third_party_settings:
+      imce:
+        enabled: true
+    type: file_generic
+    region: content
+  field_product_speed:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_product_support_drivers:
+    weight: 7
+    settings:
+      placeholder_url: 'https://www.example.com/support'
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_product_type:
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  path:
+    type: path
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 4
+    region: content
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 8
+    region: content
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 5
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    region: content
+    third_party_settings: {  }
+  url_redirects:
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  feeds_item: true
+  field_default_image_alt: true
+  field_default_image_url: true
+  field_product_default_brochure: true

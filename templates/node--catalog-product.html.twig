@@ -1,0 +1,178 @@
+{#
+/**
+ * @file
+ * Bootstrap Barrio's theme implementation to display a node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+     Only "getter" methods (method names starting with "get", "has", or "is")
+     and a few common methods such as "id" and "label" are available. Calling
+     other methods (such as node.delete) will result in an exception.
+ * - label: The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this node.
+ * - date: Themed creation date field.
+ * - author_name: Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - node: The current template type (also known as a "theming hook").
+ *   - node--type-[type]: The current node type. For example, if the node is an
+ *     "Article" it would result in "node--type-article". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+ *     teaser would result in: "node--view-mode-teaser", and
+ *     full: "node--view-mode-full".
+ *   The following are controlled through the node publishing options.
+ *   - node--promoted: Appears on nodes promoted to the front page.
+ *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+ *     teaser listings.
+ *   - node--unpublished: Appears on unpublished nodes visible only to site
+ *     admins.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - author_attributes: Same as attributes, except applied to the author of
+ *   the node tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
+ * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ * - readmore: Flag for more state. Will be true if the teaser content of the
+ *   node cannot hold the main body content.
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @see template_preprocess_node()
+ */
+#}
+
+{% 
+  set specDoc, snd, broc, cb, ci =
+    content.field_product_specs_doc|render,
+    content.field_product_support_drivers|render,
+    content.field_product_default_brochure|render,
+    content.field_product_custom_brochure|render,
+    content.field_product_image|render
+  %}
+  
+{%
+  set prodCatClasses = content.field_product_manufacturer[0]['#title']|clean_class ~ ' speed-' ~ content.field_product_speed['#items'].getString()
+  %}
+
+{% set formURL = '#' %}
+{% 
+  set brochureText, specText, supText = 
+    content.field_product_broc_btn_text.0,
+    content.field_product_spec_btn_text.0,
+    content.field_product_support_drivers[0]['#title']
+%}
+{% 
+  set imgURL, imgALT = 
+    content.field_default_image_url.0,
+    content.field_default_image_alt.0
+%}
+  
+    
+{% if not node.field_product_request_quote_form.isempty %}
+  {% set formURL = content.field_product_request_quote_form.0 %}
+{% endif %}
+
+{% if not cb %}
+  {% set brochureHref = content.field_product_default_brochure.0 %}
+{% else %}
+  {% set brochureHref = content.field_product_custom_brochure.0 %}
+{% endif %}
+
+{% if specDoc %}
+  {% set specURL = content.field_product_specs_doc.0 %}
+{% endif %}
+
+{% if snd %}
+  {% set supURL = node.field_product_support_drivers.0.url %}
+{% endif %}
+
+<div id="product-catalog" class="{{ prodCatClasses }}">
+  <div class="inner row clearfix">
+    
+    <div id="catalog-left-side" class="col-12 col-lg-6">
+      <div class="inner">
+        <div class="body">
+          {{ content.body }}
+        </div> <!-- .body -->
+        {% if node.field_product_request_quote.value %}
+        <div class="request-quote">
+          <a class="use-ajax button" data-dialog-type="modal" data-dialog-options='{"height":"auto", "width":"400px"}' href="{{ formURL }}&product={{ node.label }}">Request Quote</a>
+        </div> <!-- .request-quote -->
+        {% endif %}
+      </div> <!-- #catalog-left-side .inner -->
+    </div> <!-- #catalog-left-side -->
+    
+    <div id="catalog-right-side" class="col-12 col-lg-6">
+      <div class="inner">
+        <div class="image-wrapper">
+          <div class="inner">
+            <div class="image">
+              {% if ci %}
+                {{ content.field_product_image }}
+              {% else %}
+                <div class="field-product-image default-image">
+                  <img src="{{ imgURL }}" alt="{{ imgALT }}"/>
+                </div>
+              {% endif %}
+            </div> <!-- .image -->
+          </div> <!-- .inner -->
+        </div> <!-- .image-wrapper -->
+        <div class="specifications">
+          <div class="inner">
+            <h2>Product Specifications</h2>
+            <div class="category spec-item-wrapper">
+              <span class="specifications-title">Category:</span><span class="specifications-item">{{ content.field_product_category }}</span>
+            </div> <!-- cateogry -->
+            <div class="type spec-item-wrapper">
+              <span class="specifications-title">Type:</span><span class="specifications-item">{{ content.field_product_type }}</span>
+            </div> <!-- type -->
+            <div class="manufacturer spec-item-wrapper">
+              <span class="specifications-title">Manufacturer:</span><span class="specifications-item">{{ content.field_product_manufacturer }}</span>
+            </div> <!-- manufacturer -->
+            <div class="speed spec-item-wrapper">
+              <span class="specifications-title">Speed (up to): </span><span class="specifications-item">{{ content.field_product_speed.0 }}</span>
+            </div> <!-- speed -->
+          </div> <!-- .specifications .inner -->
+        </div> <!-- .specifications -->
+        {% if specDoc or snd or broc or cb %}
+        <div class="resources">
+          <div class="inner">
+            <h2>Product Resources</h2>
+            <ul>
+              {% if broc or cb %}
+              <li><a class="emphasized" href="{{ brochureHref }}">{{ brochureText }}</a></li>
+              {% endif %}
+              {% if specDoc %}
+              <li><a class="emphasized" href="{{ specURL }}">{{ specText }}</a></li>
+              {% endif %}
+              {% if snd %}
+              <li><a class="emphasized" href="{{ supURL }}">{{ supText }}</a></li>
+              {% endif %}
+            </ul>
+          </div> <!-- .resources .inner -->
+        </div> <!-- .resources -->
+        {% endif %}
+      </div> <!-- #catalog-right-side .inner -->
+    </div> <!-- #catalog-right-side -->   
+
+  </div> <!-- #product-catalog .inner -->
+</div> <!-- #product-catalog --> 

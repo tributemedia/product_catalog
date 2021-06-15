@@ -1,0 +1,29 @@
+name: 'Product Catalog'
+description: 'Provides content type and related configurations for the copier product catalog.'
+type: module
+core: 8.x
+dependencies:
+  - feeds
+  - feeds_ex
+  - feeds_tamper
+  - field
+  - field_formatter_class
+  - field_group
+  - file
+  - image
+  - image_effects
+  - imce
+  - link
+  - menu_ui
+  - metatag
+  - node
+  - options
+  - path
+  - pathauto
+  - svg_image
+  - taxonomy
+  - text
+  - user
+  - views
+  - webform
+version: 8.x-1.0-alpha1
